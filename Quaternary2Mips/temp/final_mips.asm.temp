@@ -1,0 +1,122 @@
+addi $sp,$sp,268697600
+addi $fp,$fp,268697596
+lable_100:
+j lable_108
+lable_101:
+program:
+subi $sp,$sp,4
+sw $ra,0($sp)
+subi $sp,$sp,4
+sw $fp,0($sp)
+move $fp,$sp
+lable_102:
+lable_103:
+lable_104:
+lw $t1,8($fp)
+lw $t2,12($fp)
+add $t1,$t1,$t2
+lable_105:
+move $t3,$t1
+lable_106:
+move $t4,$t3
+lable_107:
+move $v1,$t4
+move $sp,$fp
+addi $sp,$sp,16
+lw $ra,4($fp)
+lw $fp,0($fp)
+jr $ra
+lable_108:
+main:
+subi $sp,$sp,4
+sw $ra,0($sp)
+subi $sp,$sp,4
+sw $fp,0($sp)
+move $fp,$sp
+lable_109:
+addi $t1,$zero,1
+lable_110:
+move $t2,$t1
+lable_111:
+addi $t3,$zero,2
+lable_112:
+move $t4,$t3
+lable_113:
+addi $t5,$zero,3
+lable_114:
+move $t6,$t5
+lable_115:
+addi $t7,$zero,4
+lable_116:
+move $t8,$t7
+lable_117:
+subi $sp,$sp,4
+sw $t2,($sp)
+lable_118:
+subi $sp,$sp,4
+sw $t1,($sp)
+lable_119:
+jal program
+lable_120:
+move $t9,$v1
+lable_121:
+move $s0,$t5
+lable_122:
+addi $s1,$zero,360
+lable_123:
+move $s0,$s1
+lable_124:
+addi $s2,$zero,350
+lable_125:
+slt $s3,$s2,$s0
+lable_126:
+bnez $s3,lable_128
+lable_127:
+j lable_145
+lable_128:
+addi $t8,$t8,1
+lable_129:
+addi $s5,$zero,7
+lable_130:
+subu $s6,$t8,$s5
+lable_131:
+sltiu $s6,$s6,1
+lable_132:
+bnez $s6,lable_134
+lable_133:
+j lable_137
+lable_134:
+sw $t3,-12($fp)
+add $t3,$s0,$t6
+lable_135:
+move $s0,$t3
+lable_136:
+j lable_145
+lable_137:
+sw $t4,-16($fp)
+addi $t4,$zero,0
+lable_138:
+sw $t7,-28($fp)
+slt $t7,$t4,$t6
+lable_139:
+sw $t2,-8($fp)
+bnez $t7,lable_141
+lable_140:
+j lable_143
+lable_141:
+subi $t6,$t6,1
+lable_142:
+j lable_138
+lable_143:
+sub $s0,$s0,$t1
+lable_144:
+j lable_125
+lable_145:
+sw $t9,-36($fp)
+move $t9,$t4
+lable_146:
+move $v1,$t9
+move $sp,$fp
+addi $sp,$sp,8
+lw $ra,4($fp)
+lw $fp,0($fp)

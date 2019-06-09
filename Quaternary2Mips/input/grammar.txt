@@ -1,0 +1,91 @@
+Program->Function Program|Variable_statement ; Program|$
+
+Function-> Function_statement Function_body
+
+Function_statement->Type identifier Create_function_table ( Parameter_definition )
+
+Function_body->{ Stmts } Exit_function_table
+
+Exit_function_table->$
+
+Create_function_table->$
+
+Exit_symble_table->$
+
+Parameter_definition->Type identifier Parameter_definition_more|$
+
+Parameter_definition_more->, Type identifier Parameter_definition_more|$
+
+Stmts->Stmt Stmts|$
+
+Stmt->Variable_statement ;|Assignment_statement ;|Selection_statement|Loop_statement|Call_function ;|return Expression ;|return ;|break ;|continue ;|;
+
+Variable_statement->Type identifier Variable_statement_more
+
+Variable_statement_more->, identifier Variable_statement_more|$
+
+
+Assignment_statement->identifier Assignment_operator Expression|Single_assign_operator identifier|identifier Single_assign_operator|identifier Assignment_operator Call_function
+
+Single_assign_operator->++|--
+
+Selection_statement->Selection_statement_if Selection_statement_else|if ( Create_selection_table Selection_expression  ) Stmt Exit_selection_table|if ( Create_selection_table Selection_expression  ) { Stmts } Exit_selection_table
+
+Selection_statement_if->if ( Create_selection_table Selection_expression )  Stmt Exit_selection_table|if ( Create_selection_table Selection_expression )  { Stmts } Exit_selection_table
+
+Selection_statement_else->else Create_selection_table  Stmt Exit_symble_table|else Create_selection_table { Stmts } Exit_symble_table
+
+Selection_expression->Expression
+
+Create_selection_table->$
+
+Exit_selection_table->$
+
+
+Loop_statement->Create_loop_table While  Stmt Exit_loop_table|Create_loop_table While  { Stmts } Exit_loop_table
+
+
+While->while ( Pre_while_expression )
+
+Pre_while_expression->Expression
+
+Create_loop_table->$
+
+Exit_loop_table->$
+
+
+Expression->Cal_expression|Bool_expression
+
+Cal_expression->Cal_expression_left Between_operator Cal_expression|Pre_operator identifier|identifier Post_operator|( Cal_expression )|identifier|Const_value
+Cal_expression_left->( Cal_expression )|identifier|Const_value
+
+Bool_expression->Bool_expression_left Between_logical_operator Bool_expression|Pre_logical_operator Bool_expression|( Bool_expression )|identifier|Const_value
+Bool_expression_left->( Bool_expression )|identifier|Const_value
+
+Call_function->identifier ( Parameter_list )
+
+Parameter_list->Expression Parameter_list_more|$
+
+Parameter_list_more->, Expression Parameter_list_more|$
+
+Pre_operator->~|++|--|+|-
+
+Post_operator->++|--
+
+Between_operator->+|-|*|/|||&|^|>>|<<
+
+Assignment_operator->=|+=|-=|*=|/=|%=|&=|^=||=|<<=|>>=
+
+Between_logical_operator->==|!=|>|<|>=|<=|&&|||
+
+Pre_logical_operator->!
+
+Type->Variable_type|const Variable_type
+
+Variable_type->signed Signble_type|unsigned Signble_type|Signble_type|Non_signble_type
+
+Signble_type->int|short|long|char
+
+Non_signble_type->float|double|void
+
+Const_value->constvalue
